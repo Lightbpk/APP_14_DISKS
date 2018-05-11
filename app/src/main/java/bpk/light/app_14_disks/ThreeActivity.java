@@ -1,6 +1,8 @@
 package bpk.light.app_14_disks;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -21,8 +23,11 @@ public class ThreeActivity extends AppCompatActivity {
     EditText editText_search;
     Button button;
     ArrayAdapter<String> adapter, adapter2;
-    final String[] carNames = new String[] { "bmw", "priora", "chaser"
+    final String[] carNames = new String[] { "bmw", "toyota", "lada"
     };
+    //SharedPreferences sP = PreferenceManager.getDefaultSharedPreferences(this);
+    //SharedPreferences.Editor editor = sP.edit();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

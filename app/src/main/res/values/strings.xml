@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">APP_14_DISKS</string>
     <string name="LL">LightLog</string>
+    <string name="tBaseReload">Base reoaded</string>
+    <string name="tBaseUpFail">Fail Try again</string>
+
 </resources>
