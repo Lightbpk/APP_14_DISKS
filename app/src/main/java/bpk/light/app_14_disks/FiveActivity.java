@@ -42,7 +42,7 @@ public class FiveActivity extends AppCompatActivity {
             try {
                 if (carBase[i][0].equals(selCarName)) {
                     textView.setText(carBase[i][0]);
-                    Bitmap myBitmap = BitmapFactory.decodeFile(cardiskPath + "/" + carBase[i][1]);
+                    Bitmap myBitmap = BitmapFactory.decodeFile(cardiskPath + "/" + config.getImg(i));
                     imageView.setImageBitmap(myBitmap);
                     id = i;
                     Log.d("LightLog", "Car Found!  i - " + i+" name "+carBase[i][0]+" path "+carBase[i][1]);
