@@ -4,6 +4,14 @@
         <item>http://www.picshare.ru/uploads/180504/Z51M4a52at.jpg</item>
         <item>http://www.picshare.ru/uploads/180504/8Q56QdEv09.jpg</item>
         <item>http://www.picshare.ru/uploads/180504/MU876l1FED.jpg</item>
-        <item>http://my-files.ru/Save/nvo189/config.txt</item>
+        <item>http://www.picshare.ru/uploads/180517/V68z7trNZ6.png</item>
+        <item>http://my-files.ru/Save/juzffx/config.txt</item>
     </string-array>
+    <string-array name="diskBase">
+        <item>http://www.picshare.ru/uploads/180517/V68z7trNZ6.png</item>
+        <item>http://www.picshare.ru/uploads/180517/v2j3BL4X20.png</item>
+        <item>http://www.picshare.ru/uploads/180517/fl5UCU9t52.png</item>
+        <item>http://www.picshare.ru/uploads/180517/0RDuafvgbO.png</item>
+        <item>http://my-files.ru/Save/2c5djqf/configDisk.txt</item>
+    </string-array>>
 </resources>

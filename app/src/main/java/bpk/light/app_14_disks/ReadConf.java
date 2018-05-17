@@ -72,19 +72,15 @@ public class ReadConf {
 
     public void setW1X(int id, int w1x){
         carBase[id][2]= ""+w1x;
-        WriteConf();
     }
     public void setW1Y(int id,int w1y){
         carBase[id][3]= ""+w1y;
-        WriteConf();
     }
     public void setW2X(int id,int w2x){
         carBase[id][4]= ""+w2x;
-        WriteConf();
     }
     public void setW2Y(int id,int w2y){
         carBase[id][5]= ""+w2y;
-        WriteConf();
     }
     public void WriteConf(){
         try {

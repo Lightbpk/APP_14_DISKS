@@ -14,21 +14,27 @@ import com.thin.downloadmanager.DownloadRequest;
 import com.thin.downloadmanager.DownloadStatusListenerV1;
 import com.thin.downloadmanager.ThinDownloadManager;
 
+import java.io.File;
+
 public class MainActivity extends AppCompatActivity {
     ThinDownloadManager downloadManager;
     DownloadRequest downloadRequest;
     Uri DownloadUri, DestinatoinUri;
     Button btn_next_two;
     Button btn_reload;
-    String[] baseLinks;
+    String[] carBase;
+    String[] diskBase;
     String fileName;
+    File cardiskPath = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+"/cardisk");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        baseLinks = getResources().getStringArray(R.array.baseLinks);
-        for(int i=0; i< baseLinks.length;i++){
-            Log.d(getString(R.string.LL), "Link "+i+ " "+baseLinks[i]);
+        carBase = getResources().getStringArray(R.array.baseLinks);
+        diskBase = getResources().getStringArray(R.array.diskBase);
+
+        for(int i=0; i< carBase.length;i++){
+            Log.d(getString(R.string.LL), "Link "+i+ " "+carBase[i]);
         }
         btn_next_two = findViewById(R.id.btn_next_two);
         btn_reload = findViewById(R.id.btn_reload);
@@ -42,23 +48,34 @@ public class MainActivity extends AppCompatActivity {
         btn_reload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for(int i = 0 ; i < baseLinks.length;i++ ){
-                    loadNext(i);
+                cardiskPath.delete();
+                for(int i = 0 ; i < carBase.length;i++ ){
+                    loadNext(i,carBase);
+                }
+                for(int j = 0 ; j < carBase.length;j++ ){
+                    loadNext(j,diskBase);
                 }
                 //downloadManager.release();
                 //reload base code
             }
         });
     }
-    public void loadNext(int n){
+    public void loadNext(int n, String baseLinks[]){
         downloadManager = new ThinDownloadManager(5);
         DownloadUri = Uri.parse(baseLinks[n]);
-        if(baseLinks[n].endsWith(".txt")) {
+        if(baseLinks[n].endsWith("config.txt")) {
             fileName = "/cardisk/conf"+baseLinks[n].substring(baseLinks[n].length()-4,baseLinks[n].length());
         }
-        else {
-             fileName = "/cardisk/img"+n+baseLinks[n].substring(baseLinks[n].length()-4,baseLinks[n].length());
+        else if(baseLinks[n].endsWith("Disk.txt")){
+             fileName = "/cardisk/confDisk"+baseLinks[n].substring(baseLinks[n].length()-4,baseLinks[n].length());
         }
+        else if((baseLinks[n].endsWith(".png"))){
+            fileName = "/cardisk/m"+n+baseLinks[n].substring(baseLinks[n].length()-4,baseLinks[n].length());
+        }
+        else {
+            fileName = "/cardisk/img"+n+baseLinks[n].substring(baseLinks[n].length()-4,baseLinks[n].length());
+        }
+
         Log.d(getString(R.string.LL),fileName);
         DestinatoinUri = Uri.parse(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + fileName);
         try {

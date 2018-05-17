@@ -11,22 +11,30 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.os.Environment;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.util.Log;
 import android.view.Display;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 public class SevenActivity extends Activity {
     int id;
     int w1x=50, w1y=50, w2x=200, w2y=200;
     //String carBase[][] = new String[100][7];
     Bitmap carBG, x;
+    Button btnSave, btnListDisk;
     String cardiskPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+"/cardisk";
     Paint mPaint = new Paint();
     Rect rectBitmap, rectDisp;
     XClass x1,x2;
     ReadConf readConf;
+    RelativeLayout rlay;
+    int wrapContent = LinearLayout.LayoutParams.WRAP_CONTENT;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +48,31 @@ public class SevenActivity extends Activity {
         Point size = new Point();
         display.getSize(size);
         rectDisp = new Rect(0,0,size.x,size.y);
-        setContentView(new DrawView(this));
+        //setContentView(new DrawView(this));
+        setContentView(R.layout.activity_seven);
+        ConstraintLayout lay = findViewById(R.id.lay);
+        rlay = findViewById(R.id.rlay);
+        btnSave =findViewById(R.id.btnSave);
+        btnListDisk =findViewById(R.id.btn_listdiks);
+        RelativeLayout.LayoutParams lParams = new RelativeLayout.LayoutParams(
+                wrapContent, wrapContent);
+        rlay.addView(new DrawView(this),lParams);
+        //lParams.gravity= Gravity.BOTTOM;
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                readConf.WriteConf();
+            }
+        });
+        btnListDisk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(SevenActivity.this,NineActivity.class);
+                intent1.putExtra("id",id);
+                startActivity(intent1);
+            }
+        });
+
     }
     class DrawView extends View {
         public DrawView(Context context) {
@@ -66,7 +98,7 @@ public class SevenActivity extends Activity {
 
                 if (event.getY() > getHeight() - 50) {
                     //thread.setRunning(false);
-                    ((Activity) getContext()).finish();
+                    //((Activity) getContext()).finish();
                 } else {
                     Log.d(getString(R.string.LL), "Coords: x=" + event.getX() + ",y=" + event.getY());
                 }
