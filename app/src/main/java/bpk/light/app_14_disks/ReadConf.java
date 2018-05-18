@@ -1,26 +1,20 @@
 package bpk.light.app_14_disks;
 
-import android.os.Build;
+
 import android.os.Environment;
-import android.support.annotation.RequiresApi;
 import android.util.Log;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 
-import static android.content.Context.MODE_PRIVATE;
 
 public class ReadConf {
     String carBase[][] = new String[100][7];
     String cardiskPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+"/cardisk";
     File conf = new File(cardiskPath+"/conf.txt");
-    FileOutputStream FOS;
     public ReadConf(){
         Log.d("LightLog", "ReadConf created");
         try {

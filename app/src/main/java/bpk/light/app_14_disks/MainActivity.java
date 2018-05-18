@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 for(int i = 0 ; i < carBase.length;i++ ){
                     loadNext(i,carBase);
                 }
-                for(int j = 0 ; j < carBase.length;j++ ){
+                for(int j = 0 ; j < diskBase.length;j++ ){
                     loadNext(j,diskBase);
                 }
                 //downloadManager.release();
