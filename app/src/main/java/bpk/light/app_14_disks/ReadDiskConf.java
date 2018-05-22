@@ -41,9 +41,16 @@ public class ReadDiskConf {
         //return carBase;
     }
     public String[] getSizes(int diskID){
-        return disksBase[diskID];
+        String[] sizes = new String[disksBase[diskID].length-1];
+        for (int i=0;i<sizes.length;i++){
+            sizes[i]= disksBase[diskID][i+1];
+        }
+        return sizes;
     }
     public String getDiskName(int diskID){
         return disksBase[diskID][0].substring(0,disksBase[diskID][0].length()-1);
+    }
+    public int getLen(){
+        return disksBase.length;
     }
 }

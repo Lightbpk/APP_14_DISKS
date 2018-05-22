@@ -11,29 +11,68 @@
         android:id="@+id/rlayDisk"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="315dp">
+        tools:layout_editor_absoluteX="222dp"
+        tools:layout_editor_absoluteY="0dp">
 
     </RelativeLayout>
 
-    <ProgressBar
-        android:id="@+id/progressBar2"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textModelDisk"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/rlayDisk"
-        tools:layout_editor_absoluteX="0dp" />
+        android:text="TextView" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
+    <SeekBar
+        android:id="@+id/seekR"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="299dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar2"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_centerHorizontal="true"
+        android:max="5"
+        android:progress="3"
+        tools:layout_editor_absoluteX="43dp"
+        tools:layout_editor_absoluteY="407dp" />
+
+    <EditText
+        android:id="@+id/editSearchDisk"
+        android:layout_width="227dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintStart_toEndOf="@+id/textModelDisk"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_saveWithDisk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Save IMG"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ListView
+        android:id="@+id/ListSearchDisk"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/editSearchDisk" >
+
+    </ListView>
 
 </android.support.constraint.ConstraintLayout>
