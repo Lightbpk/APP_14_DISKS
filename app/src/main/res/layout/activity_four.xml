@@ -6,4 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".FourActivity">
 
+    <Button
+        android:id="@+id/btn_selectImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="select IMG"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="136dp" />
+
+    <Button
+        android:id="@+id/btn_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Camera"
+        app:layout_constraintTop_toBottomOf="@+id/btn_selectImg"
+        tools:layout_editor_absoluteX="136dp" />
 </android.support.constraint.ConstraintLayout>
