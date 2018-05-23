@@ -73,7 +73,6 @@ public class NineActivity extends Activity {
         setContentView(R.layout.activity_nine);
         gdt = new GestureDetector(new GestureListener());
         Intent intent = getIntent();
-
         diskConf = new ReadDiskConf();
         sizes = diskConf.getSizes(diskID);
         id = intent.getIntExtra("id",0);
@@ -228,7 +227,15 @@ public class NineActivity extends Activity {
             super(context);
             setDrawingCacheEnabled(true);
             //x = BitmapFactory.decodeResource(getResources(),R.drawable.x);
-            carBG  = BitmapFactory.decodeFile(cardiskPath + "/" + readConf.getImg(id));
+            if(id == 77){
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inJustDecodeBounds = false;
+                options.inPreferredConfig = Bitmap.Config.RGB_565;
+                options.inDither = true;
+                carBG = BitmapFactory.decodeFile(cardiskPath+"/CarPhoto.jpg", options);
+            }else {
+                carBG = BitmapFactory.decodeFile(cardiskPath + "/" + readConf.getImg(id));
+            }
             Log.d("LightLog"," carpath "+cardiskPath);
             Log.d("LightLog"," img  "+readConf.getImg(id));
             rectBitmap = new Rect(0,0,carBG.getWidth(),carBG.getHeight());
@@ -238,8 +245,8 @@ public class NineActivity extends Activity {
             w2y = Integer.parseInt(readConf.getW2Y(id));
             x1 = new XClass(BitmapFactory.decodeResource(getResources(), R.drawable.x), w1x, w1y);
             x2 = new XClass(BitmapFactory.decodeResource(getResources(), R.drawable.x), w2x, w2y);
-                leftDisk = new XClass(BitmapFactory.decodeFile(cardiskPath + "/m0.png"), w1x, w1y);
-                rightDisk = new XClass(BitmapFactory.decodeFile(cardiskPath + "/m0.png"), w2x, w2y);
+            leftDisk = new XClass(BitmapFactory.decodeFile(cardiskPath + "/m0.png"), w1x, w1y);
+            rightDisk = new XClass(BitmapFactory.decodeFile(cardiskPath + "/m0.png"), w2x, w2y);
         }
 
       /*  @Override

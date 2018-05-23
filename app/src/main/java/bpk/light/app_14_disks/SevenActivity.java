@@ -33,6 +33,7 @@ public class SevenActivity extends Activity {
     Rect rectBitmap, rectDisp;
     XClass x1,x2;
     ReadConf readConf;
+    String selImgPath;
     RelativeLayout rlay;
     int wrapContent = LinearLayout.LayoutParams.WRAP_CONTENT;
     @Override
@@ -42,6 +43,7 @@ public class SevenActivity extends Activity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Intent intent = getIntent();
         id = intent.getIntExtra("id",0);
+        selImgPath = intent.getStringExtra("selImgPath");
         readConf = new ReadConf();
         //carBase = readConf.getConfMas();
         Display display = getWindowManager().getDefaultDisplay();
@@ -78,14 +80,31 @@ public class SevenActivity extends Activity {
         public DrawView(Context context) {
             super(context);
             //x = BitmapFactory.decodeResource(getResources(),R.drawable.x);
-            carBG  = BitmapFactory.decodeFile(cardiskPath + "/" + readConf.getImg(id));
+            if(id ==77){
+                if(selImgPath.equals("")){
+                    carBG = BitmapFactory.decodeFile(selImgPath);
+                    Log.d("LightLog", " selImgPath "+selImgPath);
+                }else {
+                    carBG = BitmapFactory.decodeFile(cardiskPath + "/" + "CarPhoto.jpg");
+                    Log.d("LightLog", " selImgPath "+selImgPath);
+                }
+            }else {
+                carBG = BitmapFactory.decodeFile(cardiskPath + "/" + readConf.getImg(id));
+            }
             Log.d("LightLog"," carpath "+cardiskPath);
             Log.d("LightLog"," img  "+readConf.getImg(id));
             rectBitmap = new Rect(0,0,carBG.getWidth(),carBG.getHeight());
-            w1x = Integer.parseInt(readConf.getW1X(id));
-            w1y = Integer.parseInt(readConf.getW1Y(id));
-            w2x = Integer.parseInt(readConf.getW2X(id));
-            w2y = Integer.parseInt(readConf.getW2Y(id));
+            if(id==77){
+                w1x = 100;
+                w1y = 100;
+                w2x = 200;
+                w2y = 100;
+            }else {
+                w1x = Integer.parseInt(readConf.getW1X(id));
+                w1y = Integer.parseInt(readConf.getW1Y(id));
+                w2x = Integer.parseInt(readConf.getW2X(id));
+                w2y = Integer.parseInt(readConf.getW2Y(id));
+            }
             x1 = new XClass(BitmapFactory.decodeResource(getResources(), R.drawable.x), w1x, w1y);
             x2 = new XClass(BitmapFactory.decodeResource(getResources(), R.drawable.x), w2x, w2y);
         }
